@@ -1,5 +1,7 @@
 package com.gildedrose
 
+import com.github.stefanbirkner.systemlambda.SystemLambda.tapSystemOut
+import org.approvaltests.Approvals
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
@@ -15,6 +17,13 @@ internal class GildedRoseTest {
 
     }
 
+    @Test
+    fun textTest() {
+        val actual = tapSystemOut {
+            main(arrayOf())
+        }
+        Approvals.verify(actual)
+    }
 }
 
 

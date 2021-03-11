@@ -32,13 +32,11 @@ open class Goods internal constructor(private val item: Item) {
     }
 
     companion object {
-        val backstagePasses = "Backstage passes to a TAFKAL80ETC concert"
-        val agedBrie = "Aged Brie"
         val sulfuras = "Sulfuras, Hand of Ragnaros"
         fun Item.asGoods(): Goods = when (this.name) {
             sulfuras -> SulfurasGoods(this)
-            agedBrie -> AgedBrie(this)
-            backstagePasses -> BackstagePasses(this)
+            "Aged Brie" -> AgedBrie(this)
+            "Backstage passes to a TAFKAL80ETC concert" -> BackstagePasses(this)
             else -> Goods(this)
         }
     }

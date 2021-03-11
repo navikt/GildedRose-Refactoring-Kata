@@ -46,6 +46,16 @@ pub fn aged_brie() {
 }
 
 #[test]
+pub fn sulfuras() {
+    let items = vec![Item::new("Sulfuras, Hand of Ragnaros", 2, 80)];
+    let mut rose = GildedRose::new(items);
+
+    rose.update_quality();
+    assert_eq!(2, rose.items[0].sell_in);
+    assert_eq!(80, rose.items[0].quality);
+}
+
+#[test]
 pub fn common_items() {
     assert_common_item("Elixir of the Mongoose");
     assert_common_item("+5 Dexterity Vest");

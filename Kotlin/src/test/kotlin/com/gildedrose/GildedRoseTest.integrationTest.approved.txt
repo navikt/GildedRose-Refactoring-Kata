@@ -9,7 +9,9 @@ Sulfuras, Hand of Ragnaros, -1, 80
 Regular Cheese Cake, -1, 80
 Backstage passes to a TAFKAL80ETC concert, 15, 20
 Backstage passes to a TAFKAL80ETC concert, 10, 49
+Backstage passes to a TAFKAL80ETC concert, 10, 40
 Backstage passes to a TAFKAL80ETC concert, 5, 49
+Backstage passes to a TAFKAL80ETC concert, 5, 40
 Conjured Mana Cake, 3, 6
 
 -------- day 1 --------
@@ -22,6 +24,8 @@ Sulfuras, Hand of Ragnaros, -1, 80
 Regular Cheese Cake, -2, 78
 Backstage passes to a TAFKAL80ETC concert, 14, 21
 Backstage passes to a TAFKAL80ETC concert, 9, 50
+Backstage passes to a TAFKAL80ETC concert, 9, 42
 Backstage passes to a TAFKAL80ETC concert, 4, 50
+Backstage passes to a TAFKAL80ETC concert, 4, 43
 Conjured Mana Cake, 2, 5
 

@@ -11,7 +11,7 @@ class GildedRose(var items: Array<Item>) {
     }
 
     private fun helperItem(item: Item) {
-        item.asGoods().helperItem()
+        item.asGoods().age()
     }
 
 }

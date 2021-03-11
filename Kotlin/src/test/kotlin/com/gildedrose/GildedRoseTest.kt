@@ -46,7 +46,24 @@ internal class GildedRoseTest {
         val items = arrayOf(Item("Aged Brie", 0, 4))
         val app = GildedRose(items)
         app.updateQuality()
-        assertEquals(2, app.items[0].quality)
+        assertEquals(6, app.items[0].quality)
+    }
+
+    @Test
+    fun `quality on brie can not increase above fifty`() {
+        val items = arrayOf(Item("Aged Brie", 0, 50))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(50, app.items[0].quality)
+    }
+
+    @Test
+    fun `quality and sellIn for Sulfuras does not change`() {
+        val items = arrayOf(Item("Sulfuras, Hand of Ragnaros", 0, 80))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(80, app.items[0].quality)
+        assertEquals( 0, app.items[0].sellIn)
     }
 
     @Test

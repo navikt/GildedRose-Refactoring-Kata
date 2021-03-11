@@ -16,6 +16,7 @@ fun main(args: Array<String>) {
             Item("Backstage passes to a TAFKAL80ETC concert", 10, 40),
             Item("Backstage passes to a TAFKAL80ETC concert", 5, 49),
             Item("Backstage passes to a TAFKAL80ETC concert", 5, 40),
+            Item("Backstage passes to a TAFKAL80ETC concert", 0, 40),
             // this conjured item does not work properly yet
             Item("Conjured Mana Cake", 3, 6))
 

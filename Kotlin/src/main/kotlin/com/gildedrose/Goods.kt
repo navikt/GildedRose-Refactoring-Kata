@@ -7,25 +7,9 @@ open class Goods internal constructor(private val item: Item) {
     }
 
     protected open fun updateQuality() {
-        if (item.name == backstagePasses) {
-            increaseQuality()
-            if (item.sellIn < 10) {
-                increaseQuality()
-            }
-
-            if (item.sellIn < 5) {
-                increaseQuality()
-            }
-
-            if (item.sellIn < 0) {
-                item.quality = 0
-            }
-
-        } else {
+        degradeQuality()
+        if (item.sellIn < 0) {
             degradeQuality()
-            if (item.sellIn < 0) {
-                degradeQuality()
-            }
         }
     }
 
@@ -51,7 +35,29 @@ open class Goods internal constructor(private val item: Item) {
         val backstagePasses = "Backstage passes to a TAFKAL80ETC concert"
         val agedBrie = "Aged Brie"
         val sulfuras = "Sulfuras, Hand of Ragnaros"
-        fun Item.asGoods(): Goods = if (this.name == sulfuras) SulfurasGoods(this) else if(this.name == agedBrie) AgedBrie(this) else Goods(this)
+        fun Item.asGoods(): Goods = when (this.name) {
+            sulfuras -> SulfurasGoods(this)
+            agedBrie -> AgedBrie(this)
+            backstagePasses -> BackstagePasses(this)
+            else -> Goods(this)
+        }
+    }
+}
+
+class BackstagePasses(private val item: Item) : Goods(item) {
+    override fun updateQuality() {
+        increaseQuality()
+        if (item.sellIn < 10) {
+            increaseQuality()
+        }
+
+        if (item.sellIn < 5) {
+            increaseQuality()
+        }
+
+        if (item.sellIn < 0) {
+            item.quality = 0
+        }
     }
 }
 

@@ -35,6 +35,7 @@ impl GildedRose {
             match item.name.as_str() {
                 "Sulfuras, Hand of Ragnaros" => (),
                 "Aged Brie" => update_brie(item),
+                "Backstage passes to a TAFKAL80ETC concert" => update_backstage_pass(item),
                 _ => update_common(item),
             }
         }
@@ -52,28 +53,32 @@ fn update_brie(item: &mut Item) {
     }
 }
 
-fn update_common(item: &mut Item) {
-    if item.name != "Backstage passes to a TAFKAL80ETC concert" && item.quality > 0 {
-        item.quality -= 1;
-    } else if item.quality < 50 {
-        item.quality += 1;
-        if item.name == "Backstage passes to a TAFKAL80ETC concert" {
-            if item.sell_in < 11 && item.quality < 50 {
-                item.quality += 1;
-            }
-            if item.sell_in < 6 && item.quality < 50 {
-                item.quality += 1;
-            }
-        }
-    }
-
+fn update_backstage_pass(item: &mut Item) {
     item.sell_in -= 1;
 
+    item.quality += 1;
+
+    if item.sell_in < 11 {
+        item.quality += 1;
+    }
+    if item.sell_in < 6 {
+        item.quality += 1;
+    }
     if item.sell_in < 0 {
-        if item.name != "Backstage passes to a TAFKAL80ETC concert" && item.quality > 0 {
+        item.quality = 0;
+    }
+
+    item.quality = std::cmp::min(item.quality, 50);
+}
+
+fn update_common(item: &mut Item) {
+    item.sell_in -= 1;
+
+    if item.quality > 0 {
+        item.quality -= 1;
+
+        if item.sell_in < 0 {
             item.quality -= 1;
-        } else {
-            item.quality = 0;
         }
     }
 }

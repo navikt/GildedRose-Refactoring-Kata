@@ -6,12 +6,8 @@ class GildedRose(var items: Array<Item>) {
 
     fun updateQuality() {
         items.forEach { item ->
-            helperItem(item)
+            item.asGoods().age()
         }
-    }
-
-    private fun helperItem(item: Item) {
-        item.asGoods().age()
     }
 
 }

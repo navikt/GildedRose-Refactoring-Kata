@@ -14,29 +14,21 @@ open class Goods internal constructor(private val item: Item) {
                 }
             }
         } else {
-            if (item.quality < 50) {
-                item.quality++
-            }
+            increaseQuality()
             if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
                 if (item.sellIn < 10) {
-                    if (item.quality < 50) {
-                        item.quality++
-                    }
+                    increaseQuality()
                 }
 
                 if (item.sellIn < 5) {
-                    if (item.quality < 50) {
-                        item.quality++
-                    }
+                    increaseQuality()
                 }
             }
         }
 
         if (item.sellIn < 0) {
             if (item.name == "Aged Brie") {
-                if (item.quality < 50) {
-                    item.quality++
-                }
+                increaseQuality()
             } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
                 item.quality = 0
             } else {
@@ -46,6 +38,12 @@ open class Goods internal constructor(private val item: Item) {
                     }
                 }
             }
+        }
+    }
+
+    private fun increaseQuality() {
+        if (item.quality < 50) {
+            item.quality++
         }
     }
 

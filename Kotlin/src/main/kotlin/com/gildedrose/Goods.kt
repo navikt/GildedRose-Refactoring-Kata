@@ -39,7 +39,7 @@ class Goods private constructor(private val item: Item) {
                 }
             } else {
                 if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-                    item.quality = item.quality - item.quality
+                    item.quality = 0
                 } else {
                     if (item.quality > 0) {
                         if (item.name != "Sulfuras, Hand of Ragnaros") {

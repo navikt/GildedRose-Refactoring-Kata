@@ -7,11 +7,11 @@ open class Goods internal constructor(private val item: Item) {
     }
 
     private fun updateQuality() {
-        if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert") {
+        if (item.name != agedBrie && item.name != backstagePasses) {
             degradeQuality()
         } else {
             increaseQuality()
-            if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
+            if (item.name == backstagePasses) {
                 if (item.sellIn < 10) {
                     increaseQuality()
                 }
@@ -23,9 +23,9 @@ open class Goods internal constructor(private val item: Item) {
         }
 
         if (item.sellIn < 0) {
-            if (item.name == "Aged Brie") {
+            if (item.name == agedBrie) {
                 increaseQuality()
-            } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
+            } else if (item.name == backstagePasses) {
                 item.quality = 0
             } else {
                 degradeQuality()
@@ -41,7 +41,8 @@ open class Goods internal constructor(private val item: Item) {
 
     private fun degradeQuality() {
         if (item.quality > 0) {
-            if (item.name != "Sulfuras, Hand of Ragnaros") {
+
+            if (item.name != sulfuras) {
                 item.quality--
             }
         }
@@ -52,7 +53,10 @@ open class Goods internal constructor(private val item: Item) {
     }
 
     companion object {
-        fun Item.asGoods(): Goods = if (this.name == "Sulfuras, Hand of Ragnaros") SulfurasGoods(this) else Goods(this)
+        val backstagePasses = "Backstage passes to a TAFKAL80ETC concert"
+        val agedBrie = "Aged Brie"
+        val sulfuras = "Sulfuras, Hand of Ragnaros"
+        fun Item.asGoods(): Goods = if (this.name == sulfuras) SulfurasGoods(this) else Goods(this)
     }
 }
 

@@ -6,11 +6,11 @@ interface Goods {
     fun updateSellIn()
 
     companion object {
-        fun Item.asGoods(): Goods = NormalGoods(this)
+        fun Item.asGoods(): Goods = if (this.name == "Sulfuras, Hand of Ragnaros") SulfurasGoods(this) else NormalGoods(this)
     }
 }
 
-class NormalGoods internal constructor(private val item: Item) : Goods {
+open class NormalGoods internal constructor(private val item: Item) : Goods {
     override fun age() {
         updateSellIn()
         updateQuality()
@@ -63,8 +63,12 @@ class NormalGoods internal constructor(private val item: Item) : Goods {
     }
 
     override fun updateSellIn() {
-        if (item.name != "Sulfuras, Hand of Ragnaros") {
-            item.sellIn--
-        }
+        item.sellIn--
+    }
+}
+
+class SulfurasGoods internal constructor(private val item: Item) : NormalGoods(item) {
+
+    override fun updateSellIn() {
     }
 }

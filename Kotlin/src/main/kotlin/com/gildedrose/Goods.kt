@@ -16,18 +16,17 @@ open class Goods internal constructor(private val item: Item) {
         } else {
             if (item.quality < 50) {
                 item.quality++
-
-                if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-                    if (item.sellIn < 10) {
-                        if (item.quality < 50) {
-                            item.quality++
-                        }
+            }
+            if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
+                if (item.sellIn < 10) {
+                    if (item.quality < 50) {
+                        item.quality++
                     }
+                }
 
-                    if (item.sellIn < 5) {
-                        if (item.quality < 50) {
-                            item.quality++
-                        }
+                if (item.sellIn < 5) {
+                    if (item.quality < 50) {
+                        item.quality++
                     }
                 }
             }

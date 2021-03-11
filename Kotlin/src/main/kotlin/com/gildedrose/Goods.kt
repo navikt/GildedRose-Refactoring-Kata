@@ -7,9 +7,7 @@ open class Goods internal constructor(private val item: Item) {
     }
 
     private fun updateQuality() {
-        if (item.name != agedBrie && item.name != backstagePasses) {
-            degradeQuality()
-        } else {
+        if (item.name == agedBrie || item.name == backstagePasses) {
             increaseQuality()
             if (item.name == backstagePasses) {
                 if (item.sellIn < 10) {
@@ -20,6 +18,8 @@ open class Goods internal constructor(private val item: Item) {
                     increaseQuality()
                 }
             }
+        } else {
+            degradeQuality()
         }
 
         if (item.sellIn < 0) {
@@ -41,7 +41,6 @@ open class Goods internal constructor(private val item: Item) {
 
     private fun degradeQuality() {
         if (item.quality > 0) {
-
             if (item.name != sulfuras) {
                 item.quality--
             }

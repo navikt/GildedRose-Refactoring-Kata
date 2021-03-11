@@ -77,27 +77,27 @@ pub fn backstage_passes() {
     assert_eq!(0, rose.items[0].quality);
 }
 
-#[test]
-pub fn conjured_item() {
-    let items = vec![Item::new("Conjured Mana Cake", 5, 20)];
-    let mut rose = GildedRose::new(items);
+// #[test]
+// pub fn conjured_item() {
+//     let items = vec![Item::new("Conjured Mana Cake", 5, 20)];
+//     let mut rose = GildedRose::new(items);
 
-    rose.update_quality();
-    assert_eq!(4, rose.items[0].sell_in);
-    assert_eq!(18, rose.items[0].quality);
+//     rose.update_quality();
+//     assert_eq!(4, rose.items[0].sell_in);
+//     assert_eq!(18, rose.items[0].quality);
 
-    (0..4).for_each(|_| rose.update_quality());
-    assert_eq!(0, rose.items[0].sell_in);
-    assert_eq!(10, rose.items[0].quality);
+//     (0..4).for_each(|_| rose.update_quality());
+//     assert_eq!(0, rose.items[0].sell_in);
+//     assert_eq!(10, rose.items[0].quality);
 
-    rose.update_quality();
-    assert_eq!(-1, rose.items[0].sell_in);
-    assert_eq!(8, rose.items[0].quality);
+//     rose.update_quality();
+//     assert_eq!(-1, rose.items[0].sell_in);
+//     assert_eq!(8, rose.items[0].quality);
 
-    (0..99).for_each(|_| rose.update_quality());
-    assert_eq!(-100, rose.items[0].sell_in);
-    assert_eq!(0, rose.items[0].quality);
-}
+//     (0..99).for_each(|_| rose.update_quality());
+//     assert_eq!(-100, rose.items[0].sell_in);
+//     assert_eq!(0, rose.items[0].quality);
+// }
 
 #[test]
 pub fn common_items() {

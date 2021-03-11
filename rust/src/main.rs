@@ -36,4 +36,4 @@ fn run_main() -> GildedRose {
 }
 
 #[cfg(test)]
-mod test_gilderose;
+mod test_gildedrose;

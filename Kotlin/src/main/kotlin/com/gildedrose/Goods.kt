@@ -2,9 +2,7 @@ package com.gildedrose
 
 class Goods private constructor(private val item: Item) {
     fun age() {
-        if (item.name != "Sulfuras, Hand of Ragnaros") {
-            item.sellIn = item.sellIn - 1
-        }
+        updateSellIn()
 
         if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert") {
             if (item.quality > 0) {
@@ -48,6 +46,12 @@ class Goods private constructor(private val item: Item) {
                     }
                 }
             }
+        }
+    }
+
+    private fun updateSellIn() {
+        if (item.name != "Sulfuras, Hand of Ragnaros") {
+            item.sellIn = item.sellIn - 1
         }
     }
 

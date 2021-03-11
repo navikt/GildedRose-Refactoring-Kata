@@ -21,9 +21,7 @@ open class Goods internal constructor(private val item: Item) {
 
     private fun degradeQuality() {
         if (item.quality > 0) {
-            if (item.name != sulfuras) {
-                item.quality--
-            }
+            item.quality--
         }
     }
 
@@ -32,9 +30,8 @@ open class Goods internal constructor(private val item: Item) {
     }
 
     companion object {
-        val sulfuras = "Sulfuras, Hand of Ragnaros"
         fun Item.asGoods(): Goods = when (this.name) {
-            sulfuras -> SulfurasGoods(this)
+            "Sulfuras, Hand of Ragnaros" -> SulfurasGoods(this)
             "Aged Brie" -> AgedBrie(this)
             "Backstage passes to a TAFKAL80ETC concert" -> BackstagePasses(this)
             else -> Goods(this)
@@ -71,5 +68,8 @@ class AgedBrie(private val item: Item) : Goods(item) {
 class SulfurasGoods internal constructor(private val item: Item) : Goods(item) {
 
     override fun updateSellIn() {
+    }
+
+    override fun updateQuality() {
     }
 }

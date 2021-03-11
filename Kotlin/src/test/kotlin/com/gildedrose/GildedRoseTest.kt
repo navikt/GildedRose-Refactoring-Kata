@@ -67,6 +67,46 @@ internal class GildedRoseTest {
     }
 
     @Test
+    fun `sellin is less than 10 days quality increase 2 for backstage passes`() {
+        val items = arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 8, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(12, app.items[0].quality)
+    }
+
+    @Test
+    fun `sellin is less than 5 days quality increase 3 for backstage passes`() {
+        val items = arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 3, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(13, app.items[0].quality)
+    }
+
+    @Test
+    fun `sellin is more than 10 days quality increase 1 for backstage passes`() {
+        val items = arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 11, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(11, app.items[0].quality)
+    }
+
+    @Test
+    fun `sellin is 0 quality is 0 for backstage passes`() {
+        val items = arrayOf(Item("Backstage passes to a TAFKAL80ETC concert", 0, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(0, app.items[0].quality)
+    }
+
+    @Test
+    fun `conjured decrease quality twice`() {
+        val items = arrayOf(Item("Conjured Mana Cake", 2, 10))
+        val app = GildedRose(items)
+        app.updateQuality()
+        assertEquals(8, app.items[0].quality)
+    }
+
+    @Test
     fun `golden master`(){
         val actual = tapSystemOut {
             main(arrayOf())

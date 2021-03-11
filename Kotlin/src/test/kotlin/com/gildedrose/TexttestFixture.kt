@@ -6,6 +6,7 @@ fun main(args: Array<String>) {
 
     val items = arrayOf(Item("+5 Dexterity Vest", 10, 20), //
             Item("Aged Brie", 2, 0), //
+            Item("Aged Brie", 0, 0), //
             Item("Elixir of the Mongoose", 5, 7), //
             Item("Sulfuras, Hand of Ragnaros", 0, 80), //
             Item("Sulfuras, Hand of Ragnaros", -1, 80),

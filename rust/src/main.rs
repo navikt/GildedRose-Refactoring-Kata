@@ -3,6 +3,10 @@ mod gildedrose;
 use gildedrose::{GildedRose, Item};
 
 fn main() {
+    run_main();
+}
+
+fn run_main() -> GildedRose {
     let items = vec![
         Item::new("+5 Dexterity Vest", 10, 20),
         Item::new("Aged Brie", 2, 0),
@@ -27,4 +31,9 @@ fn main() {
         println!();
         rose.update_quality();
     }
+
+    rose
 }
+
+#[cfg(test)]
+mod test_gilderose;

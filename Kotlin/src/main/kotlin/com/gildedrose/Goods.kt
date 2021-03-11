@@ -1,22 +1,12 @@
 package com.gildedrose
 
-interface Goods {
-    fun age()
-    fun updateQuality()
-    fun updateSellIn()
-
-    companion object {
-        fun Item.asGoods(): Goods = if (this.name == "Sulfuras, Hand of Ragnaros") SulfurasGoods(this) else NormalGoods(this)
-    }
-}
-
-open class NormalGoods internal constructor(private val item: Item) : Goods {
-    override fun age() {
+open class Goods internal constructor(private val item: Item) {
+    fun age() {
         updateSellIn()
         updateQuality()
     }
 
-    override fun updateQuality() {
+    private fun updateQuality() {
         if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert") {
             if (item.quality > 0) {
                 if (item.name != "Sulfuras, Hand of Ragnaros") {
@@ -62,12 +52,16 @@ open class NormalGoods internal constructor(private val item: Item) : Goods {
         }
     }
 
-    override fun updateSellIn() {
+    protected open fun updateSellIn() {
         item.sellIn--
+    }
+
+    companion object {
+        fun Item.asGoods(): Goods = if (this.name == "Sulfuras, Hand of Ragnaros") SulfurasGoods(this) else Goods(this)
     }
 }
 
-class SulfurasGoods internal constructor(private val item: Item) : NormalGoods(item) {
+class SulfurasGoods internal constructor(private val item: Item) : Goods(item) {
 
     override fun updateSellIn() {
     }

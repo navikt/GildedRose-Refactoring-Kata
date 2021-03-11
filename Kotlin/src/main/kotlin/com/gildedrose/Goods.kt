@@ -8,11 +8,7 @@ open class Goods internal constructor(private val item: Item) {
 
     private fun updateQuality() {
         if (item.name != "Aged Brie" && item.name != "Backstage passes to a TAFKAL80ETC concert") {
-            if (item.quality > 0) {
-                if (item.name != "Sulfuras, Hand of Ragnaros") {
-                    item.quality--
-                }
-            }
+            degradeQuality()
         } else {
             increaseQuality()
             if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
@@ -32,11 +28,7 @@ open class Goods internal constructor(private val item: Item) {
             } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
                 item.quality = 0
             } else {
-                if (item.quality > 0) {
-                    if (item.name != "Sulfuras, Hand of Ragnaros") {
-                        item.quality--
-                    }
-                }
+                degradeQuality()
             }
         }
     }
@@ -44,6 +36,14 @@ open class Goods internal constructor(private val item: Item) {
     private fun increaseQuality() {
         if (item.quality < 50) {
             item.quality++
+        }
+    }
+
+    private fun degradeQuality() {
+        if (item.quality > 0) {
+            if (item.name != "Sulfuras, Hand of Ragnaros") {
+                item.quality--
+            }
         }
     }
 
